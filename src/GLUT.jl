@@ -2,7 +2,9 @@ module GLUT
 
 import GetC.@getCFun
 
-include("../deps/deps.jl")
+using BinDeps
+@BinDeps.load_dependencies
+
 @osx? (libglut = "/System/Library/Frameworks/GLUT.framework/GLUT") : nothing
 
 @getCFun libglut glutInit glutInit(pargc::Ptr{Int32}, argv::Ptr{Ptr{Uint8}})::Void
